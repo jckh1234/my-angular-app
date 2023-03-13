@@ -1,0 +1,4 @@
+label {display: block}
+input {display: block}
+:host {background-color: cadetblue;}
+form {background-color: cadetblue;}

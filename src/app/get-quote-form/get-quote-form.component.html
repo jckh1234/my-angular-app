@@ -1,0 +1,44 @@
+
+<form [formGroup]="getQuoteForm" (ngSubmit)="onSubmit()">
+    
+<p>get-quote-form works!</p>
+<label for="plan">Plan (A or S):</label>
+<input id="plan" type="text" formControlName="plan">
+
+<label for="destination">destination (A or G):</label>
+<input id="destination" type="text" formControlName="destination">
+  
+    <label for="individualOrFamily">individualOrFamily (IO or IF): </label>
+    <input id="individualOrFamily" type="text" formControlName="individualOrFamily">
+  
+    <label for="noOfIndividual">noOfIndividual: </label>
+    <input id="noOfIndividual" type="text" formControlName="noOfIndividual">
+    
+    <div *ngIf="getQuoteForm.value.individualOrFamily=='IF'">
+        <label for="noOfChild">noOfChild: </label>
+        <input id="noOfChild" type="text" formControlName="noOfChild">
+    </div>
+    <label for="startDate">startDate: </label>
+    <input id="startDate" type="text" formControlName="startDate">
+
+    <div *ngIf="getQuoteForm.value.plan=='S'">
+        <label for="endDate">endDate: </label>
+        <input id="endDate" type="text" formControlName="endDate">
+    </div>
+    <label for="noOfAdultAgeBandOne">noOfAdultAgeBandOne: </label>
+    <input id="noOfAdultAgeBandOne" type="text" formControlName="noOfAdultAgeBandOne">
+
+    <label for="noOfAudltAgeBandTwo">noOfAudltAgeBandTwo: </label>
+    <input id="noOfAudltAgeBandTwo" type="text" formControlName="noOfAdultAgeBandTwo">
+
+    <label for="noOfAdultAgeBandThree">noOfAudltAgeBandThree: </label>
+    <input id="noOfAdultAgeBandThree" type="text" formControlName="noOfAdultAgeBandThree">
+
+    <button type="submit">Get Quote</button>
+    <p>Value: {{getQuoteForm.value | json}}</p>
+    <p>Status: {{getQuoteForm.status | json}}</p>
+    <p>Error: {{getQuoteForm.errors | json}}</p>
+    <div *ngIf="getQuoteForm.errors?.['ageBandCountNotMatched'] && (getQuoteForm.touched || getQuoteForm.dirty)">
+        Name cannot match alter ego.
+    </div>
+</form>
